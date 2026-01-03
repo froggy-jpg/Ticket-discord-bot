@@ -1,0 +1,13 @@
+services:
+  discord-bot:
+    build: .
+    container_name: discord-bot
+    restart: always
+    volumes:
+      - .:/app
+    networks:
+      - bot-network
+
+networks:
+  bot-network:
+    driver: bridge
