@@ -5,7 +5,7 @@ import {
   MessageFlags,
   PermissionFlagsBits,
 } from "discord.js";
-import { TicketReplies } from "./types/ticket.constants.ts";
+import { TicketReplies } from "./types/ticket.constants.js";
 
 export async function handleEvents(client: Client) {
   client.on(Events.InteractionCreate, async (interaction) => {

@@ -1,6 +1,6 @@
 import { ButtonBuilder, ButtonStyle, ActionRowBuilder } from "discord.js";
 
-import { TicketButtonLabels } from "./types/ticket.constants.ts";
+import { TicketButtonLabels } from "./types/ticket.constants.js";
 
 const createButton = new ButtonBuilder()
   .setCustomId("ticket_create")

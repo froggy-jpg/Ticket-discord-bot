@@ -8,7 +8,7 @@ import {
 import {
   TicketCommand,
   CreateMessageCommand,
-} from "../types/ticket.constants.ts";
+} from "../types/ticket.constants.js";
 
 const commands = [
   new SlashCommandBuilder()

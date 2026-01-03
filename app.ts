@@ -1,13 +1,13 @@
 import { Client, Events, GatewayIntentBits, MessageFlags } from "discord.js";
 
-import { BUTTON_ROW, TICKET_ROW } from "./buttons.ts";
-import { handleEvents } from "./buttonHandle.ts";
-import { initializeCommands } from "./infra/deployCommands.ts";
+import { BUTTON_ROW, TICKET_ROW } from "./buttons.js";
+import { handleEvents } from "./buttonHandle.js";
+import { initializeCommands } from "./infra/deployCommands.js";
 import {
   TicketCommand,
   CreateMessageCommand,
   TicketMessageContent,
-} from "./types/ticket.constants.ts";
+} from "./types/ticket.constants.js";
 
 const client = new Client({
   intents: [
