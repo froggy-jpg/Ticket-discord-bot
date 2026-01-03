@@ -24,7 +24,7 @@ export const TicketMessageContent = {
 
 export const TicketReplies = {
   NO_MEMBER: "No member exist",
-  ALREADY_VERIFIED: "You are alerady verified",
+  ALREADY_VERIFIED: "You are already verified",
   CHAT_RULES:
     "Plese send proof of your hrt or the fact of you seeking it. It will be manually reviewed. Channel will be deleted after approval. \nПожалуйста, скиньте доказательства вашей транзиции, или то что вы в процессе ее получения. Оно будет проверенно вручную. Канал будет удален после проверки.",
   NOT_IN_TICKET_CHANNEL: "Not in a ticket channel",
