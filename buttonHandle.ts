@@ -45,7 +45,7 @@ export async function handleEvents(client: Client) {
 
         if (existingTicket) {
           await interaction.followUp({
-            content: TicketReplies.ALREADY_VERIFIED,
+            content: TicketReplies.TICKET_ALREADY_EXIST,
             flags: MessageFlags.Ephemeral,
           });
           return;
@@ -63,6 +63,7 @@ export async function handleEvents(client: Client) {
         const newChannel = await interaction.guild.channels.create({
           name: `ticket-${nextNumber}`,
           topic: userId,
+          parent: process.env.TICKET_CATEGORY_ID,
           permissionOverwrites: [
             {
               id: interaction.guild.roles.everyone,
