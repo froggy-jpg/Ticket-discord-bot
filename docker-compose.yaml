@@ -3,8 +3,6 @@ services:
     build: .
     container_name: discord-bot
     restart: always
-    volumes:
-      - .:/app
     networks:
       - bot-network
 
