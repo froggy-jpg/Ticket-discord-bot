@@ -1,6 +1,7 @@
 import { MessageFlags } from "discord.js";
 import { Event } from "../core/Event.js";
 import { reactionRoleBinds, reactionRoleMessages, saveReactionRoles, } from "../stores/roleSetup.store.js";
+import { SendRoleMessageCommand, TicketReplies, } from "../types/ticket.constants.js";
 export class CreateMessageWithRoles extends Event {
     bot;
     type = "interactionCreate";
@@ -11,13 +12,13 @@ export class CreateMessageWithRoles extends Event {
     async execute(interaction) {
         if (!interaction.isChatInputCommand())
             return;
-        if (interaction.commandName !== "sendrolemessage")
+        if (interaction.commandName !== SendRoleMessageCommand.NAME)
             return;
         if (!interaction.guild)
             return;
         await interaction.deferReply({ flags: MessageFlags.Ephemeral });
-        const messageInput = interaction.options.getString("message", true);
-        const collection = interaction.options.getString("collection", true);
+        const messageInput = interaction.options.getString(SendRoleMessageCommand.INPUT_MESSAGE_NAME, true);
+        const collection = interaction.options.getString(SendRoleMessageCommand.INPUT_COLLECTION_NAME, true);
         const message = messageInput.replace(/\\n/g, "\n");
         const channel = interaction.channel;
         if (!channel || !channel.isTextBased())
@@ -25,7 +26,7 @@ export class CreateMessageWithRoles extends Event {
         const map = reactionRoleBinds[collection];
         if (!map || Object.keys(map).length === 0) {
             await interaction.reply({
-                content: `❌ Collection \`${collection}\` is empty!`,
+                content: `Collection \`${collection}\` is empty!`,
                 ephemeral: true,
             });
             return;
@@ -36,7 +37,7 @@ export class CreateMessageWithRoles extends Event {
                 await msg.react(emoji);
             }
             catch (err) {
-                console.log("Invalid emoji:", emoji);
+                console.log(TicketReplies.INVALID_EMOJI, emoji);
             }
         }
         reactionRoleMessages[msg.id] = collection;

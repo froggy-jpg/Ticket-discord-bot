@@ -1,6 +1,7 @@
+import { Events, } from "discord.js";
 import { reactionRoleBinds, reactionRoleMessages, } from "../stores/roleSetup.store.js";
 export function setupReactionRoles(client) {
-    client.on("messageReactionAdd", async (reaction, user) => {
+    client.on(Events.MessageReactionAdd, async (reaction, user) => {
         if (user.partial)
             await user.fetch();
         if (reaction.partial)
@@ -27,7 +28,7 @@ export function setupReactionRoles(client) {
         const member = await reaction.message.guild.members.fetch(user.id);
         await member.roles.add(roleId);
     });
-    client.on("messageReactionRemove", async (reaction, user) => {
+    client.on(Events.MessageReactionRemove, async (reaction, user) => {
         if (user.partial)
             await user.fetch();
         if (reaction.partial)
