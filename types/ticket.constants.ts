@@ -40,8 +40,7 @@ export const CreateMessageCommand = {
 
 export const SendRoleMessageCommand = {
   NAME: "send_role_message",
-  DESCRIPTION:
-    "Send role picker message, with corresponding binds. Do not forget to disable user-free roles in a channel",
+  DESCRIPTION: "Send role picker message, with corresponding binds.", // should be <100 char; Also do not forget to turn off user-free roles in a channel
 
   INPUT_MESSAGE_NAME: "message",
   INPUT_MESSAGE_DESCRIPTION: "Message to send",

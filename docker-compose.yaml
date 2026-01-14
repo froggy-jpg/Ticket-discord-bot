@@ -5,6 +5,8 @@ services:
     restart: always
     networks:
       - bot-network
+    volumes:
+      - ./reactionRoles.json:/app/reactionRoles.json
 
 networks:
   bot-network:
