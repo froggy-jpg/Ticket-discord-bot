@@ -1,14 +1,19 @@
 import {
   ChannelType,
-  Client,
-  Events,
+  Interaction,
   MessageFlags,
   PermissionFlagsBits,
 } from "discord.js";
-import { TicketReplies } from "./types/ticket.constants.js";
+import { TicketReplies } from "../types/ticket.constants.js";
+import { DiscordBot } from "../core/DiscordBot.js";
+import { Event } from "../core/Event.js";
 
-export async function handleEvents(client: Client) {
-  client.on(Events.InteractionCreate, async (interaction) => {
+export class HandleCommandsButtons extends Event<"interactionCreate"> {
+  type: "interactionCreate" = "interactionCreate";
+  constructor(bot: DiscordBot) {
+    super();
+  }
+  async execute(interaction: Interaction) {
     if (!interaction.isButton() || !interaction.guild) return;
 
     try {
@@ -152,5 +157,5 @@ export async function handleEvents(client: Client) {
         });
       }
     }
-  });
+  }
 }

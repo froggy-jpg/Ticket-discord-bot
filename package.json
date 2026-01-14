@@ -1,15 +1,15 @@
 {
-  "name": "mlembot",
+  "name": "amadeus",
   "version": "1.0.0",
-  "description": "",
+  "description": "Discord bot for cuties",
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "start": "node --env-file=.env dist/app.js"
+    "start": "tsc && node --env-file=.env dist/app.js"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "SonyaJAVASCRIPT",
+  "license": "MIT",
   "type": "module",
   "dependencies": {
     "discord.js": "^14.25.1"

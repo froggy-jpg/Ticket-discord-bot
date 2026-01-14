@@ -1,21 +1,59 @@
 import {
   PermissionFlagsBits,
   REST,
+  Role,
   Routes,
   SlashCommandBuilder,
 } from "discord.js";
-
 import {
-  TicketCommand,
   CreateMessageCommand,
+  RoleSetupCommand,
+  SendRoleMessageCommand,
+  TicketCommand,
 } from "../types/ticket.constants.js";
-
 const commands = [
   new SlashCommandBuilder()
     .setName(TicketCommand.NAME)
     .setDescription(TicketCommand.DESCRIPTION)
     .setDefaultMemberPermissions(PermissionFlagsBits.ManageChannels),
-
+  new SlashCommandBuilder()
+    .setName(SendRoleMessageCommand.NAME)
+    .setDescription(SendRoleMessageCommand.DESCRIPTION)
+    .setDefaultMemberPermissions(PermissionFlagsBits.ManageChannels)
+    .addStringOption((option) =>
+      option
+        .setName(SendRoleMessageCommand.INPUT_MESSAGE_NAME)
+        .setDescription(SendRoleMessageCommand.INPUT_MESSAGE_DESCRIPTION)
+        .setRequired(true),
+    )
+    .addStringOption((option) =>
+      option
+        .setName(SendRoleMessageCommand.INPUT_COLLECTION_NAME)
+        .setDescription(SendRoleMessageCommand.INPUT_COLLECTION_DESCRIPTION)
+        .setRequired(true),
+    ),
+  new SlashCommandBuilder()
+    .setName(RoleSetupCommand.NAME)
+    .setDescription(RoleSetupCommand.DESCRIPTION)
+    .setDefaultMemberPermissions(PermissionFlagsBits.ManageChannels)
+    .addRoleOption((option) =>
+      option
+        .setName(RoleSetupCommand.INPUT_ROLE_NAME)
+        .setDescription(RoleSetupCommand.INPUT_EMOJI_DESCRIPTION)
+        .setRequired(true),
+    )
+    .addStringOption((option) =>
+      option
+        .setName(RoleSetupCommand.INPUT_EMOJI_NAME)
+        .setDescription(RoleSetupCommand.INPUT_EMOJI_DESCRIPTION)
+        .setRequired(true),
+    )
+    .addStringOption((option) =>
+      option
+        .setName(RoleSetupCommand.INPUT_COLLECTION_NAME)
+        .setDescription(RoleSetupCommand.INPUT_COLLECTION_DESCRIPTION)
+        .setRequired(true),
+    ),
   new SlashCommandBuilder()
     .setName(CreateMessageCommand.NAME)
     .setDescription(CreateMessageCommand.DESCRIPTION)
@@ -39,7 +77,6 @@ export async function initializeCommands() {
       ),
       { body: commands },
     );
-
     console.log("Commands initialized!!");
   } catch (error) {
     console.error(error);
