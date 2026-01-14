@@ -6,14 +6,15 @@ import { CreateMessageWithRoles } from "./buttonsCreate/CreateMessageWithRoles.j
 import { setupReactionRoles } from "./buttonsHandle/ReactionHandle.js";
 import { HandleCommandsButtons } from "./buttonsHandle/HandleCommandsButtons.js";
 try {
-  const bot = new DiscordBot();
-  bot.initializeEvent(new TicketActions(bot));
-  bot.initializeEvent(new CreateMessage(bot));
-  bot.initializeEvent(new HandleCommandsButtons(bot));
-  bot.initializeEvent(new HandleRole(bot));
-  bot.initializeEvent(new CreateMessageWithRoles(bot));
-  setupReactionRoles(bot.client);
-  bot.start();
-} catch (e) {
-  console.log(e);
+    const bot = new DiscordBot();
+    bot.initializeEvent(new TicketActions(bot));
+    bot.initializeEvent(new CreateMessage(bot));
+    bot.initializeEvent(new HandleCommandsButtons(bot));
+    bot.initializeEvent(new HandleRole(bot));
+    bot.initializeEvent(new CreateMessageWithRoles(bot));
+    setupReactionRoles(bot.client);
+    bot.start();
+}
+catch (e) {
+    console.log(e);
 }
