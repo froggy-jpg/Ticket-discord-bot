@@ -81,6 +81,14 @@ export class HandleCommandsButtons extends Event<"interactionCreate"> {
                 PermissionFlagsBits.SendMessages,
               ],
             },
+            {
+              id: process.env.SUPPORT_ROLE_ID!,
+              allow: [
+                PermissionFlagsBits.ViewChannel,
+                PermissionFlagsBits.SendMessages,
+                PermissionFlagsBits.ReadMessageHistory,
+              ],
+            },
           ],
         });
 
